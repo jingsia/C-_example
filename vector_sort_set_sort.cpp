@@ -11,11 +11,14 @@
 #include<cstring>
 #include<algorithm>
 using namespace std;
+
+/*
 struct student{
 	char name[10];
 	int score;
 	int age;
 };
+*/
 #if 0
 //自定义“小于”
 bool comp(const student &a, const student &b)
@@ -58,6 +61,7 @@ int main(){
 }
 #endif
 
+#if 0
 //自定义“小于”
 struct comp_sort
 {
@@ -98,6 +102,49 @@ int main(){
 	//sort(setStudents.begin(), setStudents.end());
 	cout << "===========排序后================" << endl;
 	for (StudentType::iterator it = testStudents.begin(); it != testStudents.end(); it++){
+		cout << "name: " << it->name << " score: " << it->score << " age: " << it->age << endl;
+	}
+	return 0;
+}
+#endif
+struct student{
+	char name[10];
+	int score;
+	int age;
+
+	bool operator < (const student &b) const
+	{
+		if (score > b.score)
+			return true;
+		else if (score == b.score  && age > b.age)
+			return true;
+		else                ///这里的else return false非常重要！！！！！
+			return false;
+	}
+};
+
+int main(){
+	set<student> vectorStudents;
+	int n = 3;
+	while (n--){
+		student oneStudent;
+		string name;
+		int score;
+		int age;
+		cin >> name >> score>>age;
+		strcpy(oneStudent.name, name.c_str());
+		oneStudent.score = score;
+		oneStudent.age = age;
+		vectorStudents.insert(oneStudent);
+	}
+	cout << "===========排序前================" << endl;
+	for (set<student>::iterator it = vectorStudents.begin(); it != vectorStudents.end(); it++){
+		cout << "name: " << it->name << " score: " << it->score << " age: "<<it->age<<endl;
+	}
+	//sort(vectorStudents.begin(), vectorStudents.end(), comp);
+	//sort(setStudents.begin(), setStudents.end());
+	cout << "===========排序后================" << endl;
+	for (set<student>::iterator it = vectorStudents.begin(); it != vectorStudents.end(); it++){
 		cout << "name: " << it->name << " score: " << it->score << " age: " << it->age << endl;
 	}
 	return 0;
