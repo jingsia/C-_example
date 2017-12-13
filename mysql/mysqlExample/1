@@ -1,0 +1,9 @@
+select * from player
+result == > 0x13a7700
+field==>4
+num field>>== 4
+0 123456 234 45 
+num field>>== 4
+1 123456 234 45 
+num field>>== 4
+2 123456 234 45 

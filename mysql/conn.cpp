@@ -13,6 +13,7 @@
 //#include<stdlib.h>
 using namespace std;
 
+//编译 g++ test.cpp `mysql_config --cflags --libs` -o test
 template <typename Type>
 std::string Itoa(Type n, int dec = 10)
 {
@@ -52,7 +53,7 @@ int main(int argc, char* argv[])
 		printf("connect success!\n");
 
 		int i;
-		for(i = 0; i < 10000; ++i)
+		for(i = 0; i < 100; ++i)
 		{
 			std::string str1 = "insert into player values(";
 			std::string str2 = ",'123456', 234,45)";
